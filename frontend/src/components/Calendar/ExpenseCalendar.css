@@ -1,0 +1,481 @@
+.calendar-container {
+  padding: 20px;
+  margin-bottom: 30px;
+  max-width: 100%; /* Changed from 850px */
+  width: 100%; /* Add this */
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calendar-title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calendar-header h3 {
+  color: #333;
+  font-size: 20px; /* Increased from 18px */
+  font-weight: 600;
+  margin: 0;
+}
+
+[data-theme="dark"] .calendar-header h3 {
+  color: #e5e7eb;
+}
+
+.collapse-btn {
+  background: rgba(102, 126, 234, 0.1);
+  border: 2px solid #667eea;
+  color: #667eea;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.collapse-btn:hover {
+  background: #667eea;
+  color: white;
+  transform: rotate(180deg);
+}
+
+.calendar-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calendar-nav-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 12px; /* Increased padding */
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  font-size: 18px; /* Increased */
+}
+
+.calendar-nav-btn:hover {
+  background: #5568d3;
+  transform: scale(1.1);
+}
+
+.calendar-month {
+  font-size: 16px; /* Increased */
+  font-weight: 600;
+  color: #333;
+  min-width: 160px; /* Increased */
+  text-align: center;
+}
+
+[data-theme="dark"] .calendar-month {
+  color: #e5e7eb;
+}
+
+/* Color Legend */
+.color-legend {
+  display: flex;
+  justify-content: center;
+  gap: 25px; /* Increased */
+  margin-bottom: 20px; /* Increased */
+  padding: 15px; /* Increased */
+  background: #f9fafb;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .color-legend {
+  background: #111827;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Increased */
+  font-size: 13px; /* Increased */
+  color: #6b7280;
+}
+
+[data-theme="dark"] .legend-item {
+  color: #9ca3af;
+}
+
+.legend-color {
+  width: 24px; /* Increased */
+  height: 24px; /* Increased */
+  border-radius: 4px;
+  border: 2px solid #e5e7eb;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px; /* Increased */
+  margin-bottom: 20px; /* Increased */
+}
+
+.calendar-day-name {
+  text-align: center;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 10px; /* Increased */
+  font-size: 12px; /* Increased */
+  text-transform: uppercase;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+[data-theme="dark"] .calendar-day-name {
+  background: #111827;
+  color: #9ca3af;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  max-height: 100px; /* Increased */
+  border: 2px solid #e5e7eb;
+  border-radius: 10px; /* Increased */
+  padding: 10px; /* Increased */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-height: 70px; /* Increased */
+  background: white;
+}
+
+[data-theme="dark"] .calendar-day {
+  border-color: #374151;
+  background: #1f2937;
+}
+
+.calendar-day.blank {
+  border: none;
+  background: transparent;
+  cursor: default;
+}
+
+/* Color Classes - High to Low Spending */
+.calendar-day.expense-very-high {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.calendar-day.expense-high {
+  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+.calendar-day.expense-medium {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.calendar-day.expense-low {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+[data-theme="dark"] .calendar-day.expense-very-high {
+  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+  border-color: #ef4444;
+}
+
+[data-theme="dark"] .calendar-day.expense-high {
+  background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+  border-color: #f97316;
+}
+
+[data-theme="dark"] .calendar-day.expense-medium {
+  background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+  border-color: #f59e0b;
+}
+
+[data-theme="dark"] .calendar-day.expense-low {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+  border-color: #10b981;
+}
+
+.calendar-day.selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-color: #667eea !important;
+  color: white;
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4) !important;
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+.calendar-day:hover:not(.blank):not(.selected) {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.day-number {
+  font-weight: 700;
+  font-size: 16px; /* Increased */
+  margin-bottom: 4px;
+}
+
+.day-amount {
+  font-size: 11px; /* Increased */
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.calendar-day.expense-very-high .day-amount {
+  color: #991b1b;
+}
+
+.calendar-day.expense-high .day-amount {
+  color: #9a3412;
+}
+
+.calendar-day.expense-medium .day-amount {
+  color: #92400e;
+}
+
+.calendar-day.expense-low .day-amount {
+  color: #065f46;
+}
+
+.calendar-day.selected .day-amount,
+.calendar-day.selected .day-number,
+.calendar-day.selected .expense-count {
+  color: white !important;
+}
+
+.expense-count {
+  font-size: 10px; /* Increased */
+  color: #6b7280;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* Selected Day Details */
+.selected-day-details {
+  margin-top: 20px; /* Increased */
+  padding: 20px; /* Increased */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 10px;
+  border: 2px solid #667eea;
+  max-height: 400px; /* Increased */
+  overflow-y: auto;
+}
+
+[data-theme="dark"] .selected-day-details {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
+  border-color: #818cf8;
+}
+
+.selected-day-details h4 {
+  color: #333;
+  margin-bottom: 15px; /* Increased */
+  font-size: 16px; /* Increased */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-theme="dark"] .selected-day-details h4 {
+  color: #e5e7eb;
+}
+
+.day-expenses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Increased */
+}
+
+.day-expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px; /* Increased */
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+.day-expense-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .day-expense-item {
+  background: #111827;
+  border-color: #374151;
+}
+
+.expense-badge {
+  padding: 5px 12px; /* Increased */
+  border-radius: 12px;
+  font-size: 11px; /* Increased */
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.expense-badge.Food { background: #ef4444; }
+.expense-badge.Travel { background: #06b6d4; }
+.expense-badge.Shopping { background: #8b5cf6; }
+.expense-badge.Entertainment { background: #f59e0b; }
+.expense-badge.Bills { background: #dc2626; }
+.expense-badge.Healthcare { background: #10b981; }
+.expense-badge.Education { background: #3b82f6; }
+.expense-badge.Other { background: #6b7280; }
+
+.expense-info-text {
+  flex: 1;
+  margin: 0 15px; /* Increased */
+  display: flex;
+  flex-direction: column;
+  gap: 3px; /* Increased */
+}
+
+.expense-place {
+  font-size: 13px; /* Increased */
+  color: #333;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .expense-place {
+  color: #e5e7eb;
+}
+
+.expense-description {
+  font-size: 12px; /* Increased */
+  color: #6b7280;
+  font-style: italic;
+}
+
+.expense-amount {
+  color: #667eea;
+  font-size: 14px; /* Increased */
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.day-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px; /* Increased */
+  border-top: 2px solid #667eea;
+  margin-top: 8px; /* Increased */
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 6px;
+}
+
+.day-total strong {
+  color: #333;
+  font-size: 14px; /* Added */
+}
+
+[data-theme="dark"] .day-total strong {
+  color: #e5e7eb;
+}
+
+.total-value {
+  color: #667eea !important;
+  font-size: 17px; /* Increased */
+}
+
+/* Scrollbar Styling */
+.selected-day-details::-webkit-scrollbar {
+  width: 8px; /* Increased */
+}
+
+.selected-day-details::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.selected-day-details::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 15px;
+  }
+
+  .calendar-grid {
+    gap: 6px;
+  }
+
+  .calendar-day {
+    min-height: 55px;
+    max-height: 75px;
+    padding: 6px;
+  }
+
+  .day-number {
+    font-size: 12px;
+  }
+
+  .day-amount {
+    font-size: 9px;
+  }
+
+  .expense-count {
+    font-size: 8px;
+  }
+
+  .color-legend {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .legend-item {
+    font-size: 11px;
+  }
+
+  .legend-color {
+    width: 18px;
+    height: 18px;
+  }
+
+  .selected-day-details {
+    padding: 15px;
+    max-height: 300px;
+  }
+
+  .day-expense-item {
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .expense-info-text {
+    margin: 0;
+  }
+}

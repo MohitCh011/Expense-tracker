@@ -1,0 +1,264 @@
+.bill-reminders-container {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.bills-header h2 {
+  font-size: 28px;
+  color: #333;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .bills-header h2 {
+  color: #e5e7eb;
+}
+
+.btn-add-bill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-add-bill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.upcoming-alert {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  margin-bottom: 30px;
+}
+
+[data-theme="dark"] .upcoming-alert {
+  background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+}
+
+.upcoming-alert strong {
+  display: block;
+  color: #92400e;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.upcoming-alert p {
+  color: #78350f;
+  font-size: 14px;
+  margin: 0;
+}
+
+.bills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.bill-card {
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s;
+  position: relative;
+}
+
+[data-theme="dark"] .bill-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.bill-card.paid {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+[data-theme="dark"] .bill-card.paid {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+}
+
+.bill-card.overdue {
+  border-color: #ef4444;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+}
+
+[data-theme="dark"] .bill-card.overdue {
+  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+}
+
+.bill-card.due-soon {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+[data-theme="dark"] .bill-card.due-soon {
+  background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+}
+
+.bill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.bill-icon {
+  font-size: 48px;
+}
+
+.bill-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon.pay {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.btn-icon.pay:hover {
+  background: #10b981;
+  color: white;
+}
+
+.bill-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+[data-theme="dark"] .bill-title {
+  color: #e5e7eb;
+}
+
+.bill-category {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 15px;
+}
+
+.bill-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recurring-badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  background: rgba(102, 126, 234, 0.2);
+  color: #667eea;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.bill-due {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.paid-text {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.days-until {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 8px;
+}
+
+.days-until.urgent {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.days-until.overdue-text {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.bill-notes {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.no-bills {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #9ca3af;
+}
+
+.no-bills p {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .bill-reminders-container {
+    padding: 15px;
+  }
+
+  .bills-grid {
+    grid-template-columns: 1fr;
+  }
+}

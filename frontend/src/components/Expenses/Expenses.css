@@ -1,0 +1,183 @@
+.add-expense-card, .expense-list-card, .add-income-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.add-expense-card h3, .expense-list-card h3, .add-income-card h3 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+/* Expense List */
+.expense-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.expense-item:hover {
+  background: #f9f9f9;
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+.expense-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+}
+
+.expense-category-badge {
+  background: #667eea;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.expense-category-badge[data-category="Food"] { background: #ff6b6b; }
+.expense-category-badge[data-category="Travel"] { background: #4ecdc4; }
+.expense-category-badge[data-category="Shopping"] { background: #9b59b6; }
+.expense-category-badge[data-category="Entertainment"] { background: #f39c12; }
+.expense-category-badge[data-category="Bills"] { background: #e74c3c; }
+.expense-category-badge[data-category="Healthcare"] { background: #2ecc71; }
+.expense-category-badge[data-category="Education"] { background: #3498db; }
+
+.expense-details {
+  flex: 1;
+}
+
+.expense-details strong {
+  color: #333;
+  font-size: 16px;
+}
+
+.expense-place {
+  color: #666;
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.expense-desc {
+  color: #888;
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.expense-details small {
+  color: #999;
+  font-size: 12px;
+}
+
+.btn-delete {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background: #d32f2f;
+  transform: scale(1.05);
+}
+
+.expense-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-top: 2px solid #e0e0e0;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.total-amount {
+  color: #667eea;
+  font-size: 18px;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-size: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .expense-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-delete {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+}

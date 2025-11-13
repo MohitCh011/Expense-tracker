@@ -1,0 +1,153 @@
+.spending-alerts-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.alert-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-left: 4px solid;
+  backdrop-filter: blur(10px);
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.alert-card.warning {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #f59e0b;
+}
+
+.alert-card.danger {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-color: #ef4444;
+}
+
+.alert-card.caution {
+  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+  border-color: #f97316;
+}
+
+.alert-card.info {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .alert-card {
+  background: #1f2937 !important;
+  border: 2px solid;
+}
+
+.alert-icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-card.warning .alert-icon {
+  color: #f59e0b;
+}
+
+.alert-card.danger .alert-icon {
+  color: #ef4444;
+}
+
+.alert-card.caution .alert-icon {
+  color: #f97316;
+}
+
+.alert-card.info .alert-icon {
+  color: #3b82f6;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-content h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+[data-theme="dark"] .alert-content h4 {
+  color: #e5e7eb;
+}
+
+.alert-content p {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.alert-action {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.alert-card.warning .alert-action {
+  background: rgba(245, 158, 11, 0.2);
+  color: #92400e;
+}
+
+.alert-card.danger .alert-action {
+  background: rgba(239, 68, 68, 0.2);
+  color: #991b1b;
+}
+
+.alert-card.caution .alert-action {
+  background: rgba(249, 115, 22, 0.2);
+  color: #9a3412;
+}
+
+.alert-card.info .alert-action {
+  background: rgba(59, 130, 246, 0.2);
+  color: #1e40af;
+}
+
+.alert-dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #9ca3af;
+  transition: all 0.2s;
+}
+
+.alert-dismiss:hover {
+  color: #ef4444;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .spending-alerts-container {
+    right: 10px;
+    left: 10px;
+    max-width: 100%;
+  }
+}

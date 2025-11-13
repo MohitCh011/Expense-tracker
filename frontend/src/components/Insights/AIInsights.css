@@ -1,0 +1,141 @@
+.ai-insights-container {
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.ai-insights-container h3 {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+[data-theme="dark"] .ai-insights-container h3 {
+  color: #e5e7eb;
+}
+
+.insights-subtitle {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.insights-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.insight-card {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.insight-card.success {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-color: #10b981;
+}
+
+.insight-card.warning {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #f59e0b;
+}
+
+.insight-card.info {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-color: #3b82f6;
+}
+
+.insight-card.goal {
+  background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%);
+  border-color: #8b5cf6;
+}
+
+[data-theme="dark"] .insight-card {
+  background: #1f2937 !important;
+}
+
+.insight-icon {
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.insight-card.success .insight-icon {
+  color: #10b981;
+}
+
+.insight-card.warning .insight-icon {
+  color: #f59e0b;
+}
+
+.insight-card.info .insight-icon {
+  color: #3b82f6;
+}
+
+.insight-card.goal .insight-icon {
+  color: #8b5cf6;
+}
+
+.insight-content {
+  flex: 1;
+}
+
+.insight-content h4 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .insight-content h4 {
+  color: #e5e7eb;
+}
+
+.insight-content p {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+[data-theme="dark"] .insight-content p {
+  color: #9ca3af;
+}
+
+.insight-action {
+  font-size: 13px;
+  color: #374151;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+[data-theme="dark"] .insight-action {
+  background: rgba(0, 0, 0, 0.2);
+  color: #d1d5db;
+}
+
+.insight-action strong {
+  color: #667eea;
+}
+
+@media (max-width: 768px) {
+  .insight-card {
+    flex-direction: column;
+  }
+
+  .insight-icon {
+    align-self: flex-start;
+  }
+}
