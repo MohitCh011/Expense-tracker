@@ -13,15 +13,18 @@ const generateToken = (id) => {
 // @access  Public
 const registerUser = async (req, res) => {
   try {
+    console.log('📝 Registration attempt:', req.body);
     const { username, email, password } = req.body;
 
     // Check if user exists
     const userExists = await User.findOne({ $or: [{ email }, { username }] });
 
     if (userExists) {
+      console.log('❌ User already exists');
       return res.status(400).json({ message: 'User already exists' });
     }
 
+    console.log('✅ Creating new user...');
     // Create user
     const user = await User.create({
       username,
@@ -29,15 +32,19 @@ const registerUser = async (req, res) => {
       password
     });
 
+    console.log('✅ User created, generating token...');
     if (user) {
+      const token = generateToken(user._id);
+      console.log('✅ Token generated successfully');
       res.status(201).json({
         _id: user._id,
         username: user.username,
         email: user.email,
-        token: generateToken(user._id)
+        token: token
       });
     }
   } catch (error) {
+    console.error('❌ Registration error:', error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -85,7 +92,7 @@ const getUserProfile = async (req, res) => {
 const updateBudget = async (req, res) => {
   try {
     const { category, amount } = req.body;
-    
+
     const user = await User.findById(req.user._id);
     user.budget.set(category, amount);
     await user.save();

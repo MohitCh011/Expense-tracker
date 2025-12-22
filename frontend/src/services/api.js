@@ -1,15 +1,14 @@
 import axios from 'axios';
 
-// src/config/api.js or similar
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
-
+// src/config/api.js
+// Base URL now correctly points to /api so it matches your backend routes
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 });
 
 // Add token to requests
@@ -50,7 +49,8 @@ export const getSavingsGoals = () => api.get('/savings-goals');
 export const addSavingsGoal = (data) => api.post('/savings-goals', data);
 export const updateSavingsGoal = (id, data) => api.put(`/savings-goals/${id}`, data);
 export const deleteSavingsGoal = (id) => api.delete(`/savings-goals/${id}`);
-export const contributeToGoal = (id, amount) => api.post(`/savings-goals/${id}/contribute`, { amount });
+export const contributeToGoal = (id, amount) =>
+  api.post(`/savings-goals/${id}/contribute`, { amount });
 
 // 🆕 Bill Reminders APIs
 export const getBillReminders = () => api.get('/bill-reminders');
